@@ -53,7 +53,7 @@ module.exports={
         const {id} = req.params;
         const newData= req.body;
         try {
-            const updatedData= await Pet.findOneAndUpdate({id:id},newData,{new:true});
+            const updatedData= await Pet.findOneAndUpdate({_id:id},newData,{new:true});
             if (updatedData) {
                 return res.status(200).json({ "state": true, "data": updatedData });
             } else {
