@@ -5,7 +5,7 @@ module.exports={
 
     findAll :async(req,res)=>{
         try {
-         //const data=[{"id":82,"name":"Juanita"},{"id":83,"name":"Juancho"}]
+         
          const data= await Pet.find({})
          return res.status(200).json({"state":true, "data": data})
         } catch (error) {
@@ -62,6 +62,22 @@ module.exports={
             return res.status(500).json({"state":false,"error":error}) 
         }
 
+    },
+
+    deletePetById:async(req,res)=>{
+        const {id} =req.params
+        try{
+            const pet=await Pet.findByIdAndDelete(id)
+            if(!pet){
+                return res.status(404).json({"state":false,"error":"Mascota no encontrada"})
+            }
+            const owner= await Owner.findById(pet.owner)
+            owner.pets.pull(id)
+            await owner.save()
+            return res.status(200).json({ "state": true, "message": "Mascota eliminada exitosamente" })
+        }catch(error){
+            return res.status(500).json({ "state": false, "error": "Error al eliminar la mascota", "details": error.message })
+        }
     }
 
 }

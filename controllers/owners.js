@@ -1,5 +1,6 @@
 
 const Owner = require ('./../models/model-owner')
+const Pet = require('./../models/model-pets')
 module.exports={
     findAll :async(req,res)=>{
        try {
@@ -55,5 +56,23 @@ module.exports={
             return res.status(500).json({"state":false,"error":error}) 
         }
 
+    },
+    
+    deleteById: async(req,res)=>{
+        const {id}=req.params
+        try{
+            const deletedOwner=await Owner.findByIdAndDelete(id)
+            if(!deletedOwner){
+                return res.status(404).json({"state":false,"error":"No ha sido encontrado el dueño"})
+            }
+            await Pet.deleteMany({owner:deletedOwner._id})
+            return res.status(200).json({"state":true,"message":"Dueño y mascota relacionados eliminados de manera exitosa"})
+        }catch(error){
+            console.log(error)
+            return res.status(500).json({"state":false,"error":"Error al eliminar la ciudad","details":error.message})
+        }
+
     }
+ 
+
 }
