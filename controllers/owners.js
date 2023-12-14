@@ -72,6 +72,30 @@ module.exports={
             return res.status(500).json({"state":false,"error":"Error al eliminar la ciudad","details":error.message})
         }
 
+    },
+    findPetDetails: async(req,res)=>{
+        const {ownerId,petId}= req.params;
+
+        try{
+            
+            const owner= await Owner.findById(ownerId).populate('pets');
+
+            if(!owner){
+                return res.status(404).json({"state":false,"error":"Dueño no encontrado"})
+            }
+
+            const pet= owner.pets.find(p=>p._id.toString()===petId);
+
+            if(!pet){
+                return res.status(404).json({"state":false,"error":"Mascota no encontrada"})
+            }
+
+            return res.status(200).json({"state":true,"data":pet});
+        }catch(error){
+            console.error(error)
+            return res.status(500).json({"state":false,"error":error})
+        }
+
     }
  
 
