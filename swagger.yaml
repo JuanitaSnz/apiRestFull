@@ -205,7 +205,7 @@ paths:
   
 # definitions
 definitions:
-  pets:
+  pet:
     type: object
     required:
         - id
@@ -233,7 +233,7 @@ definitions:
         type: Boolean
         description: Sexo de la Mascota
         default: true
-  owners:
+  owner:
     type: object
     required:
         - id
