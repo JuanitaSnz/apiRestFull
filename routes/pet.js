@@ -11,8 +11,8 @@ const{findAll,
 routes.get("/",findAll)
 routes.get("/:id",findByObjectId)
 routes.get("/id/:id",findById)
-routes.post("/savePet/:id",save)
-routes.put("/update/:id",update)
-routes.delete("/delete/:id",deletePetById)
+routes.post("/:id",save)
+routes.put("/:id",update)
+routes.delete("/:id",deletePetById)
 
 module.exports=routes

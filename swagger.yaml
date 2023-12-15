@@ -62,7 +62,7 @@ paths:
         500:
           description: 'Server Error'
 
-# [PUT] pet/update/id
+# [PUT] pet/id
     put:
       tags:
       - Mascota
@@ -88,7 +88,7 @@ paths:
         500:
           description: 'Server Error'
 
-# [DELETE] pet/delete/id
+# [DELETE] pet/id
     delete:
       tags:
       - Mascota
@@ -159,7 +159,7 @@ paths:
         500:
           description: 'Server Error'
 
-# [PUT] owner/update/id
+# [PUT] owner/id
     put:
       tags:
       - Dueños
@@ -185,7 +185,7 @@ paths:
         500:
           description: 'Server Error'
 
-# [DELETE] owner/delete/id
+# [DELETE] owner/id
     delete:
       tags:
       - Dueños

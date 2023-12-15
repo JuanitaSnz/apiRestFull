@@ -14,6 +14,6 @@ routes.get("/:id",findByObjectId)
 routes.get("/id/:id",findById)
 routes.get("/findPet/:ownerId/pets/:petId",findPetDetails)
 routes.post("/",save)
-routes.put("/update/:id",update)
-routes.delete("/delete/:id",deleteById)
+routes.put("/:id",update)
+routes.delete("/:id",deleteById)
 module.exports=routes;
