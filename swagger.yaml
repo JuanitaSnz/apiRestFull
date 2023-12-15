@@ -47,7 +47,7 @@ paths:
 # [GET] pet/id
     get:
       tags:
-      - Mascota
+      - Mascotas
       summary: Buscar por el id de la Mascota
       parameters:
       - name: id
@@ -65,7 +65,7 @@ paths:
 # [PUT] pet/id
     put:
       tags:
-      - Mascota
+      - Mascotas
       summary: Actualizar las Mascota por el id
       parameters:
       - name: id
@@ -91,7 +91,7 @@ paths:
 # [DELETE] pet/id
     delete:
       tags:
-      - Mascota
+      - Mascotas
       summary: Elimina la Mascota por el id
       parameters:
       - name: id
