@@ -1,39 +1,39 @@
 tags:
-- name: empleados
-  description: Endpoints de empleados
-- name: departamentos
-  description: Endpoints de departamentos
+- name: Mascotas
+  description: Endpoints de Mascotas
+- name: Dueños
+  description: Endpoints de Dueños
 paths:
-# [GET] empleados
-  /employees:
+# [GET] mascotas
+  /pet:
     get:
       tags:
-      - empleados
-      summary: Encontrar todos los Empleados
+      - Mascotas
+      summary: Encontrar todas las Mascotas
       responses:
         200:
           description: 'OK'
         500:
           description: 'Server Error'
 
-# [POST] empleados
-  /employees/{id}:
+# [POST] Mascotas
+  /pet/{id}:
     post:
       tags:
-      - empleados
-      summary: Agregar nuevo Empleado a un Departamento
+      - Mascotas
+      summary: Agregar nueva Mascota a un Dueño
       parameters:
       - name: id
         in: path
-        description: ID del departamento al que se agregará el empleado
+        description: ID del dueño al que se agregará la mascota
         required: true
         type: string
       - name: body
         in: body
-        description: Información del empleado
+        description: Información de la Mascota
         required: true
         schema:
-          $ref: '#/definitions/employees'
+          $ref: '#/definitions/pet'
       responses:
         201:
           description: 'Created'
@@ -44,15 +44,15 @@ paths:
         500:
           description: 'Server Error'
 
-# [GET] empleados/id
+# [GET] pet/id
     get:
       tags:
-      - empleados
-      summary: Buscar por el id del empleado
+      - Mascota
+      summary: Buscar por el id de la Mascota
       parameters:
       - name: id
         in: path
-        description: Id del empleado
+        description: Id de la Mascota
         required: true
       responses:
         200:
@@ -62,22 +62,22 @@ paths:
         500:
           description: 'Server Error'
 
-# [PUT] empleados/id
+# [PUT] pet/id
     put:
       tags:
-      - empleados
-      summary: Actualizar el empleado por el id
+      - Mascota
+      summary: Actualizar las Mascota por el id
       parameters:
       - name: id
         in: path
-        description: Id del empleado
+        description: Id de la Mascota
         required: true
       - name: body
         in: body
-        description: Información del empleado
+        description: Información de la Mascota
         required: true
         schema:
-          $ref: '#/definitions/employees'
+          $ref: '#/definitions/pet'
       responses:
         200:
           description: 'OK'
@@ -88,15 +88,15 @@ paths:
         500:
           description: 'Server Error'
 
-# [DELETE] empleados/id
+# [DELETE] pet/id
     delete:
       tags:
-      - empleados
-      summary: Elimina el empleado por el id
+      - Mascota
+      summary: Elimina la Mascota por el id
       parameters:
       - name: id
         in: path
-        description: Id del empleado
+        description: Id de la Mascota
         required: true
       responses:
         200:
@@ -106,30 +106,30 @@ paths:
         500:
           description: 'Server Error'
 
-# [GET] departamentos
+# [GET] owner
   /departments:
     get:
       tags:
-      - departamentos
-      summary: Encontrar todos los departamentos
+      - Dueños
+      summary: Encontrar todos los Dueños
       responses:
         200:
           description: 'OK'
         500:
           description: 'Server Error'
 
-# [POST] departamentos
+# [POST] owner
     post:
       tags:
-      - departamentos
-      summary: Agregar nuevo Departamento
+      - Dueños
+      summary: Agregar nuevo Dueño
       parameters:
       - name: body
         in: body
-        description: Información del departamento
+        description: Información del Dueño
         required: true
         schema:
-          $ref: '#/definitions/departments'
+          $ref: '#/definitions/owner'
       responses:
         201:
           description: 'Created'
@@ -140,16 +140,16 @@ paths:
         500:
           description: 'Server Error'
 
-# [GET] departamentos/id
-  /departments/{id}:
+# [GET] owner/id
+  /owner/{id}:
     get:
       tags:
-      - departamentos
-      summary: Buscar por el id del departamento
+      - Dueños
+      summary: Buscar por el id del Dueño
       parameters:
       - name: id
         in: path
-        description: Id del departamento
+        description: Id del Dueño
         required: true
       responses:
         200:
@@ -159,22 +159,22 @@ paths:
         500:
           description: 'Server Error'
 
-# [PUT] departamentos/id
+# [PUT] owner/id
     put:
       tags:
-      - departamentos
-      summary: Actualizar el departamento por el id
+      - Dueños
+      summary: Actualizar los Dueños por el id
       parameters:
       - name: id
         in: path
-        description: Id del departamento
+        description: Id del Dueño
         required: true
       - name: body
         in: body
-        description: Información del departamento
+        description: Información del Dueño
         required: true
         schema:
-          $ref: '#/definitions/departments'
+          $ref: '#/definitions/owner'
       responses:
         200:
           description: 'OK'
@@ -185,15 +185,15 @@ paths:
         500:
           description: 'Server Error'
 
-# [DELETE] departamentos/id
+# [DELETE] owner/id
     delete:
       tags:
-      - departamentos
-      summary: Elimina el departamento por el id
+      - Dueños
+      summary: Elimina el Dueño por el id
       parameters:
       - name: id
         in: path
-        description: Id del departamento
+        description: Id del Dueño
         required: true
       responses:
         200:
@@ -205,45 +205,63 @@ paths:
   
 # definitions
 definitions:
-  employees:
+  pets:
     type: object
     required:
+        - id
         - name
-        - lastName
-        - role
+        - race
+        - sex
     properties:
+      id:
+        type: string
+        description: Id de la Mascota
+        default: 1123
       name:
         type: string
-        description: nombre del empleado
-        default: John
-      lastName:
+        description: nombre de la Mascota
+        default: Canela
+      race:
         type: string
-        description: apellido del empleado
-        default: Doe
-      role:
-        type: string
-        description: rol del empleado
-        default: Count
-  departments:
+        description: Raza de la Mascota
+        default: Sabueso
+      birthday:
+        type: Date
+        description: Fecha de Nacimiento de la Mascota
+        default: 2021-05-15
+      sex:
+        type: Boolean
+        description: Sexo de la Mascota
+        default: true
+  owners:
     type: object
     required:
-        - department_name
-        - description
-        - employees
+        - id
+        - name
+        - phone
+        - email
     properties:
-      department_name:
+      id:
         type: string
-        description: nombre del departamento
-        default: Pruebas
-      description:
+        description: id del Dueño
+        default: 908
+      name:
         type: string
-        description: descripción del departamento
-        default: Donde se hacen las pruebas
-      employees:
+        description: Nombre del Dueño
+        default: Juanita Sanabria
+      phone:
+        type: string
+        description: Numero del Dueño
+        default: 323453421
+      email:
+        type: string
+        description: Correo del Dueño
+        default: juanita.sanabria@gmail.com
+      pets:
         type: array
-        description: Lista de empleados en el departamento
+        description: Lista de Mascotas de un Dueño 
         items:
-          $ref: '#/definitions/employees'
+          $ref: '#/definitions/pets'
         default: []
 schemes:
  - https
