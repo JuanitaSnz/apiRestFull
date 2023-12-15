@@ -17,7 +17,7 @@ paths:
           description: 'Server Error'
 
 # [POST] Mascotas
-  /pet/savePet/{id}:
+  /pet/{id}:
     post:
       tags:
       - Mascotas
