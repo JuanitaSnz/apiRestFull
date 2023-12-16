@@ -21,6 +21,10 @@ Actualizaciones y Eliminaciones: Mantén la información actualizada con solicit
 Recursos Adicionales:
 
 Explora la documentación detallada de la API utilizando Swagger https://apirestful-mascotas.onrender.com/api-docs/.
+Puedes acceder a ella a través de los siguientes dos enlaces:
+Vercel con el siguiente enlace: https://api-rest-full.vercel.app/  
+Render con el siguiente enlace: https://apirestful-mascotas.onrender.com
+
 
 
 
